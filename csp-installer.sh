@@ -31,21 +31,28 @@ fi
 if [ $1 = "help" ]; then
     usage
     exit 0
-# Remove CSP_PATH and its contents (so this installer can be run again)
+# Remove CSP_PATH and csprc
 elif [ $1 = "uninstall" ]; then
+    echo "Removing CSP..."
+    
     if [ -d $CSP_PATH ]; then
-        echo "Removing CSP..." 1>&2
         rm -rf $CSP_PATH
         if [ $? -ne 0 ]; then
-            echo "Failed to remove directory $CSP_PATH (maybe a permission issue?)" 1>&2
+            echo "Failed to remove directory $CSP_PATH" 1>&2
             exit 1
         fi
-        echo "Successfully removed CSP"
-        exit 0
-    else
-        echo "$CSP_PATH not found, no operations performed" 1>&2
-        exit 0
     fi
+
+    if [ -f /home/$USER/.config/csprc ]; then
+        rm /home/$USER/.config/csprc
+        if [ $? -ne 0 ]; then
+            echo "Failed to remove /home/$USER/.config/csprc" 1>&2
+            exit 1
+        fi
+    fi
+
+    echo "Successfully removed CSP"
+    exit 0
 else
     CSP_VERSION=
     case $1 in

@@ -12,12 +12,13 @@ Arch Linux users can install them with `pacman -S wget pv`
 git clone https://github.com/minsiam/csp-linux
 cd csp-linux
 chmod +x csp-installer.sh
-./csp-installer.sh
+./csp-installer.sh 3
 ```
 
 Once it's installed, you can start CSP by running `csp-linux` in your terminal.
 
 ## Uninstallation
-To uninstall CSP, simply remove `~/.local/share/csp-linux` & `~/.config/csprc`. Future plans include an uninstaller.
+To uninstall CSP, run `./csp-installer.sh uninstall`, or delete `~/.local/share/csp-linux`
+& `~/.config/csprc` from your machine manually.
 
 ## Made with love ❤️ by minsiam
