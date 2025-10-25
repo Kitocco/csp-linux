@@ -65,7 +65,7 @@ else
         3)
             CSP_VERSION=3
             ;;
-        3)
+        4)
             CSP_VERSION=4
             ;;
         *)
